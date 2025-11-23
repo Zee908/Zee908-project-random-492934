@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    hi
+   {% for note in note_list %}
+      <p>{{Note.content}}</p>
+   {% endfor %}
 </body>
 </html>
