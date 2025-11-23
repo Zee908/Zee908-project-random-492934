@@ -5,4 +5,4 @@ def Note_list(request):
     context = {
         'note_list':Note.objects.all()
     }
-    return render(request,'index.html',{})
+    return render(request,'index.html',context)
