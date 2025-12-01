@@ -18,12 +18,7 @@ class NoteCreateView(CreateView):
     fields= ['title', 'content']
     success_url = reverse_lazy("index")
     
-def form_valid(self, form):
-    messages.success(self.request, "یادداشت ذخیره شد.")
-    return super().form_valid(form)
-  
-   
-  
+
 
 def form_invalid(self, form):
         messages.error(self.request, "اطلاعات معتبر نیست.")
@@ -35,6 +30,23 @@ class NoteUpdateView(UpdateView):
     form_class = NoteForm
     template_name = "note_form.html"
     success_url = reverse_lazy("note-list")
+
+
+def form_valid(self, form):
+    messages.success(self.request, "یادداشت ذخیره شد.")
+    return super().form_valid(form)
+
+
+class NoteDeleteView(DeleteView):
+    model = Note
+    template_name = "note_confirm_delete.html"
+    success_url = reverse_lazy("note-list")
+
+
+def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "یادداشت با موفقیت حذف شد.")
+        return super().delete(request, *args, **kwargs)
+  
 
 
 
